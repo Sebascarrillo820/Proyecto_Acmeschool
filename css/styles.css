@@ -71,3 +71,155 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(49, 94, 251,
   .side-footnote { display:none; }
   .login-page { padding:28px 16px 18px; }
 }
+
+/* ==========================================
+   DÍA 2 - NAVEGACIÓN Y GESTIÓN
+========================================== */
+
+.workspace {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  min-height: calc(100vh - 76px);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 28px 16px;
+  border-right: 1px solid var(--border);
+  background: white;
+}
+
+.sidebar-label {
+  margin: 0 10px 10px;
+  color: #9aa5b5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 12px 13px;
+  border: 0;
+  border-radius: 10px;
+  color: #647187;
+  background: transparent;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.nav-item span {
+  width: 22px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.nav-item:hover {
+  color: var(--blue);
+  background: #f4f6ff;
+}
+
+.nav-item.active {
+  color: var(--blue);
+  background: #edf1ff;
+}
+
+.sidebar-note {
+  margin-top: auto;
+  padding: 15px 10px 0;
+  border-top: 1px solid #edf0f5;
+  color: #526078;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.sidebar-note span {
+  display: block;
+  color: #9aa5b5;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.dashboard-main {
+  min-width: 0;
+  padding-top: 38px;
+  padding-bottom: 55px;
+}
+
+.dashboard-main user-management,
+.dashboard-main exam-management {
+  display: block;
+  margin-top: 25px;
+}
+
+.home-link {
+  margin-top: 15px;
+  padding: 0;
+  border: 0;
+  color: var(--blue);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}
+
+.coming-soon {
+  display: inline-block;
+  margin-top: 15px;
+  color: #9aa5b5;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-label,
+  .sidebar-note {
+    display: none;
+  }
+
+  .nav-item {
+    width: auto;
+    padding: 10px 11px;
+  }
+
+  .dashboard-main {
+    padding-top: 27px;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav-item {
+    flex: 1 1 auto;
+    justify-content: center;
+    font-size: 11px;
+  }
+
+  .nav-item span {
+    display: none;
+  }
+}
