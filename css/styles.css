@@ -223,3 +223,34 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(49, 94, 251,
     display: none;
   }
 }
+
+/* Día 3: acceso público para estudiantes */
+.public-exams-link {
+  grid-column: 2;
+  justify-self: start;
+  width: 100%;
+  max-width: 460px;
+  padding: 13px 18px;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background: white;
+  color: var(--blue-dark);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.public-exams-link:hover {
+  background: var(--blue);
+  color: white;
+}
+
+@media (max-width: 820px) {
+  .public-exams-link {
+    grid-column: 1;
+    justify-self: stretch;
+    max-width: 100%;
+  }
+}

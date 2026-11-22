@@ -2,6 +2,7 @@
 import { storage } from "./services/storage.js";
 import { authService } from "./services/auth.js";
 
+import "./components/exam-taking.js";
 import "./components/login-form.js";
 import "./components/app-header.js";
 import "./components/management-components.js";
@@ -37,6 +38,9 @@ function renderLogin() {
         </div>
 
         <login-form></login-form>
+        <button class="public-exams-link" id="open-public-exams" type="button">
+         Presentar un examen como estudiante
+        </button>
       </div>
 
       <footer class="login-footer">
@@ -48,6 +52,11 @@ function renderLogin() {
   app.querySelector("login-form").addEventListener(
     "login-submit",
     handleLogin
+  );
+
+  app.querySelector("#open-public-exams").addEventListener(
+    "click", 
+    renderPublicExams
   );
 }
 
@@ -231,3 +240,8 @@ function startApp() {
 
 startApp();
  
+function renderPublicExams() {
+  app.innerHTML = `<exam-taking></exam-taking>`;
+
+  app.querySelector("exam-taking").addEventListener("back-to-login", renderLogin);
+}
