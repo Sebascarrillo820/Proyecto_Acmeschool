@@ -6,6 +6,7 @@ import "./components/exam-taking.js";
 import "./components/login-form.js";
 import "./components/app-header.js";
 import "./components/management-components.js";
+import "./components/results-management.js";
 
 const app = document.querySelector("#app");
 
@@ -66,9 +67,10 @@ function renderLogin() {
 
 function renderDashboard(user, activeSection = "home") {
   const navigation = [
-    { id: "home", label: "Inicio", icon: "⌂" },
-    { id: "users", label: "Gestión de usuarios", icon: "♙" },
-    { id: "exams", label: "Gestión de exámenes", icon: "▤" }
+   { id: "home", label: "Inicio", icon: "⌂" },
+   { id: "users", label: "Gestión de usuarios", icon: "♙" },
+   { id: "exams", label: "Gestión de exámenes", icon: "▤" },
+   { id: "results", label: "Resultados", icon: "◷" }
   ];
 
   let content = "";
@@ -92,6 +94,16 @@ function renderDashboard(user, activeSection = "home") {
       </p>
 
       <exam-management></exam-management>
+    `;
+  } else if (activeSection === "results") {
+    content = `
+      <p class="eyebrow">RENDIMIENTO ACADÉMICO</p>
+      <h1 class="page-title">Resultados de exámenes</h1>
+      <p class="page-subtitle">
+        Consulta las calificaciones y el desempeño de los estudiantes.
+      </p>
+
+      <results-management></results-management>
     `;
   } else {
     content = `
@@ -135,13 +147,14 @@ function renderDashboard(user, activeSection = "home") {
 
         <article class="info-card">
           <div class="card-icon">◷</div>
-          <h3>Resolución de exámenes</h3>
+          <h3>Resultados de exámenes</h3>
           <p>
-            El módulo público para estudiantes se implementará en el Día 3.
+            Consulta las calificaciones y revisa el rendimiento de los estudiantes.
           </p>
-          <span class="coming-soon">Próximamente</span>
+          <button class="home-link" data-go="results">
+           Abrir módulo →
+          </button>
         </article>
-      </section>
 
       <div class="status-note">
         <strong>Sesión activa.</strong>
@@ -192,6 +205,13 @@ function renderDashboard(user, activeSection = "home") {
       renderDashboard(user, button.dataset.go);
     });
   });
+
+  app.querySelectorAll("[data-go]").forEach(button => {
+    button.addEventListener("click", () => {
+     console.log("Clic detectado:", button.dataset.go);
+     renderDashboard(user, button.dataset.go);
+  });
+});
 }
 
 // ==========================================
